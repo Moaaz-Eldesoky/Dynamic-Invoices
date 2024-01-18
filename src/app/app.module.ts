@@ -12,6 +12,10 @@ import { CurrencyExchangeComponent } from './Currency-Exchange-Rate/currency-exc
 import { PriceAdjustmentComponent } from './Product-Price-Adjustment/price-adjustment/price-adjustment.component';
 import { NotificationComponentComponent } from './Notification-Component/notification-component/notification-component.component';
 import { UserSettingsComponent } from './User-Settings/user-settings/user-settings.component';
+import { FooterComponent } from './shared/footer/footer.component';
+import { HeaderComponent } from './shared/header/header.component';
+import { NavbarComponent } from './shared/navbar/navbar.component';
+
 
 @NgModule({
   declarations: [
@@ -24,7 +28,10 @@ import { UserSettingsComponent } from './User-Settings/user-settings/user-settin
     CurrencyExchangeComponent,
     PriceAdjustmentComponent,
     NotificationComponentComponent,
-    UserSettingsComponent
+    UserSettingsComponent,
+    HeaderComponent,
+    NavbarComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,45 @@
+<div class="header">
+  <div class="gray"></div>
+  <header class="vh-100 mb-4 ">
+    <div id="carouselId" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner" role="listbox">
+        <div class="carousel-item active">
+          <div class="row">
+            <div class="col-md-2" *ngFor="let product of products.slice(0, 6)">
+              <div class="image">
+                <img [src]="product.image" [ngClass]="{'img-fluid': true, 'custom-image-class': true}" class="w-100" alt="image">
+              </div>
+              <div class="item-details">
+                <h5>Chicken for two Roasted <span>$21</span></h5>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="row">
+            <div class="col-md-2" *ngFor="let product of products.slice(6, 12)">
+              <div class="image">
+                <img [src]="product.image" [ngClass]="{'img-fluid': true, 'custom-image-class': true}" class="w-100" alt="image">
+              </div>
+              <div class="item-details">
+                <h5>Chicken for two Roasted <span>$21</span></h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselId" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselId" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+
+
+    <!-- TESTIMONIALS -->
+
+  </header>
+</div>

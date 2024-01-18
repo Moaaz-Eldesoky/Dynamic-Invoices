@@ -1,0 +1,296 @@
+
+/**
+* 8.0 Footer
+* -----------------------------------------------------------------------------
+*/
+.site-footer {
+clear: both;
+margin: 0;
+padding: 72px 0 0;
+position: relative;
+width: 100%;
+z-index: 3;
+background-color: #000;
+}
+.site-footer ul{
+  list-style-type: none;
+}
+.footer a,
+.site-footer a,
+.site-footer {
+color: #ccc;
+}
+.footer a:hover,
+.footer .footer-links li a:hover,
+.site-footer a:hover {
+color: #000000;
+}
+.contact_email a,
+.contact_email a:hover {
+background: none !important;
+padding:0;
+}
+.footer-widget .widget {
+margin: 0 ;
+}
+.site-footer .widget .widget-title {
+border-bottom: 2px solid #3f3f3f;
+padding:0 0 10px;
+margin: 0 0 20px;
+}
+.home.blog .footer-widget .widget{margin-bottom:30px;padding-right: 40px;}
+.footer-bottomtop-inner aside.widget {
+  display: inline-block;
+  vertical-align: middle;
+  width: auto;
+}
+.footer-bottomtop-inner .widget_media_image {
+  float: left;
+}
+.footer-bottomtop-inner .widgets-follow-us {
+  float: right;
+}
+.footer-bottom .widget .tnp.tnp-widget {
+  margin: 0;
+}
+.static-links-list span a::before {
+content: "\f105";
+font-family: "FontAwesome";
+text-align: center;
+line-height: 15px;
+color: #b8b8b8;
+margin-right: 3px;
+}
+.site-footer .widget-title::before {
+position: absolute;
+content: '';
+background: #fa8b6e;
+height: 2px;
+width: 50px;
+bottom: -2px;
+top: auto;
+}
+#menu-footer-navigation > li > a {
+width: 15%;
+display: inline-block;
+vertical-align: top;
+position: relative;
+}
+#menu-footer-navigation > li > a:after {
+  position: absolute;
+  content: ":";
+  right: -10px;
+  left: auto;
+}
+.site-footer .sub-menu, .site-footer .sub-menu li {
+display: block;
+list-style: none;
+margin: 0;
+}
+#footer-widget-area {
+  font-size: 16px;
+  width: 100%;
+  line-height: 28px;
+}
+.static-links-list span {
+float: none;
+padding: 4px 0;
+width: auto;
+display: block;
+}
+.footer-menu ul, .footer-menu-links ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.footer-widget .widget.widget_newsletterwidget,
+.footer-widget .widget .tnp.tnp-nubscription {
+background-color: transparent;
+text-align: left;
+}
+.footer-widget .widget.widget_newsletterwidget .widget-title {
+background-color: transparent;
+}
+.footer-widget .widget.widget_newsletterwidget p {
+margin-bottom: 24px;
+padding: 0;
+}
+.footer-widget .widget .tnp.tnp-widget {
+margin-top: 10px;
+margin-bottom: 0;
+}
+.footer-widget .widget .tnp-email {
+line-height: 25px;
+}
+.footer-widget .widget .widget .tnp .tnp-submit,
+.footer-widget .widget .tnp .tnp-submit {
+width: 45px;
+height: 41px;
+}
+.footer-menu ul li, .footer-menu-links ul li {
+  display: inline-block;
+  padding: 0 10px 0 15px;
+}
+.footer-menu ul li:first-child, .footer-menu-links ul li:first-child {
+  background: none;
+  padding: 1px 10px 1px 5px;
+}
+.footer-menu-links a, .footer-menu-links a:hover {
+
+  font-size: 16px;
+  color: #f7896d;
+}
+.site-footer .widget_nav_menu li a,
+.site-footer .widget_nav_menu .expandable-hitarea:before,
+.site-footer .widget_nav_menu .collapsable-hitarea:before {
+color: #fff;
+}
+.footer-menu-links ul li:last-child:after {
+border-right: 0;
+}
+.footer_inner ul {
+margin: 0;
+padding: 0;
+list-style: none;
+}
+.footer-bottom-inner {
+  text-align: center;
+}
+.footer-widget {
+text-align: center;
+display: inline-block;
+vertical-align: top;
+width: 100%;
+}
+.footer-bottom {
+  clear: both;
+  display: table;
+  overflow: hidden;
+  padding: 49px 0 58px;
+  width: 100%;
+}
+.footer-center {
+  display: inline-block;
+  width: 100%;
+}
+#follow_us {
+  margin: 18px 0 0;
+}
+.second-widget.footer-widget {
+  margin: 60px 0 0;
+}
+
+.site-info {
+text-align: center;
+margin: 0 0 18px;
+font-size: 16px;
+}
+
+.widgets-footercontact .contact_title,
+.widgets-footercontact .contact_address,
+.widgets-footercontact .phone {
+padding: 0 0 18px;
+}
+
+
+.address_content .contact_address {
+position: relative;
+}
+.widgets-footercontact .icon-image {
+  display: inline-block;
+  height: 40px;
+  margin-bottom: 19px;
+  width: 40px;
+}
+.icon-image i{
+  font-size: 32px;
+  color: #f7896d;
+}
+.widgets-footercontact .email, .widgets-footercontact .address, .widgets-footercontact .phone {
+  float: left;
+  position: relative;
+  text-align: center;
+  width: 33.3333%;
+}
+.address::before {
+  background-color: #808080;
+  content: "";
+  height: 1px;
+  left: -160px;
+  position: absolute;
+  top: 18px;
+  width: 305px;
+}
+.address::after {
+  background-color: #808080;
+  content: "";
+  height: 1px;
+  position: absolute;
+  right: -150px;
+  top: 18px;
+  width: 305px;
+}
+/*=============== Social Block ========*/
+.follow-us a {
+display: inline-block;
+margin: 0 30px 0 0;
+padding: 0 5px;
+text-align: center;
+transition: all 0.4s ease 0s;
+-webkit-transition: all 0.4s ease 0s;
+-moz-transition: all 0.4s ease 0s;
+-ms-transition: all 0.4s ease 0s;
+-o-transition: all 0.4s ease 0s;
+width: 13px;
+vertical-align: top;
+}
+
+.follow-us a:hover.facebook i {
+color: #3b5998;
+}
+.follow-us a:hover.twitter i {
+color: #4099FF;
+}
+.follow-us a:hover.linkedin i {
+color: #007bb6;
+}
+.follow-us a:hover.rss i {
+color: #FA9B39;
+}
+.follow-us a:hover.youtube i {
+color: #C4302B;
+}
+.follow-us a:hover.pinterest i {
+color: #910101;
+}
+.follow-us a:hover.google-plus i {
+color: #C63D2D;
+}
+.follow-us a:hover.skype i {
+color: #12A5F4;
+}
+.follow-us a:hover.instagram i {
+color: #125688;
+}
+
+.follow-us a i {
+color: #8c8c8c;
+display: block;
+font-size: 26px;
+font-weight: 400;
+line-height: 28px;
+margin: 0;
+vertical-align: top;
+}
+.footer-menu-links {
+  margin: 0 0 13px;
+  text-align: center;
+}
+
+.widgets-about img{
+  max-height: 200px;
+}
+.widgets-about img{
+  margin-top: -80px;
+}

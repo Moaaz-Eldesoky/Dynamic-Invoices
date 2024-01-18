@@ -1,0 +1,46 @@
+.cart-icon {
+  position: relative;
+  display: inline-block;
+}
+
+.item-count {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: red;
+  color: white;
+  padding: 1px;
+  border-radius: 50%;
+  padding: 4px 6px;
+  font-size: 12px;
+}
+nav i{
+  font-size: 24px;
+  font-weight: 600;
+  color: #FFF;
+}
+nav .sub-menu i{
+  font-size: 16px;
+  font-weight: 600;
+  color: #000;
+  margin-right: 10px;
+}
+
+nav .main-links{
+  font-size: 20px;
+  color: #FFF;
+  font-weight: 600;
+
+}
+nav img{
+  width: 125px;
+  height: auto;
+}
+.navbar-expand-lg .navbar-nav .dropdown-menu {
+  position: absolute;
+  left: -117px;
+}
+.main-links a{
+  color: #FFF;
+  margin-left: 10px;
+}

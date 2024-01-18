@@ -1,0 +1,69 @@
+.header {
+	height: 40rem;
+}
+
+.orange {
+	height: 30rem;
+	background-color: #DDD;
+	position: relative;
+}
+
+.grey {
+	height: 20rem;
+	background-color: #DDD;
+	position: relative;
+}
+
+/* header {
+	position: absolute;
+	top: 70px;
+	left: 10%;
+} */
+
+
+/* Limit the width of the carousel container */
+
+
+.carousel {
+	max-width: 1200px;
+
+	margin: 0 auto;
+  position: absolute;
+  top: 350px;
+	left: 10%;
+}
+
+.custom-image-class {
+	height: 250px;
+	width: 100%;
+	border-radius: 10px;
+}
+
+.item-details {
+	background-color: #333333;
+	color: #fff;
+	padding: 20px 10px;
+	text-align: left;
+}
+
+h5 {
+	margin: 0 0 15px;
+	font-size: 18px;
+	line-height: 18px;
+}
+
+span {
+	color: red;
+	float: right;
+	padding-right: 20px;
+}
+
+p {
+	font-size: 14px;
+}
+
+.item {
+	text-align: center;
+	padding: 20px;
+	margin-bottom: 80px;
+}
