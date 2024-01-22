@@ -4,7 +4,7 @@
     <p>Upload your invoice as an Excel sheet with extensions .xls or .xlsx</p>
     <div class="upload-container">
       <div class="upload-btn-wrapper">
-        <button class="btn btn-success">Select An EXCEL File</button>
+        <button class="btn btn-success main-button">Select An EXCEL File</button>
         <input type="file" name="file" id="fileInput" />
       </div>
       <div class="clouds mx-2">
@@ -21,9 +21,12 @@
       <h6>Drag and Drop your Invoice her</h6>
     </div>
     <div *ngIf="file">
-      file name: {{file.name}} <br>
-      <button (click)="file=undefined">Clear file</button>
-      <button (click)="uploadFile()">Upload File</button>
+      <h4>file name: {{file.name}}</h4>
+      <p>size: {{file.size}}</p>
+      <button class="btn btn-danger mx-2 my-2" (click)="file=undefined">Clear file</button>
+      <button class="btn btn-primary mx-2" (click)="uploadFile()">Next Step</button>
     </div>
+    <a routerLink="/invoicemgm">Add your invoice manually insteed</a>
+
   </div>
 </div>
