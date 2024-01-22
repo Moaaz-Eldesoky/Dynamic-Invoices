@@ -139,7 +139,8 @@ height: 41px;
 .footer-menu-links a, .footer-menu-links a:hover {
 
   font-size: 16px;
-  color: #f7896d;
+  color: #e5322d;
+  text-decoration: none;
 }
 .site-footer .widget_nav_menu li a,
 .site-footer .widget_nav_menu .expandable-hitarea:before,
@@ -177,6 +178,10 @@ width: 100%;
 #follow_us {
   margin: 18px 0 0;
 }
+#follow_us a{
+  text-decoration: none;
+}
+
 .second-widget.footer-widget {
   margin: 60px 0 0;
 }
@@ -205,7 +210,7 @@ position: relative;
 }
 .icon-image i{
   font-size: 32px;
-  color: #f7896d;
+  color: #e5322d;
 }
 .widgets-footercontact .email, .widgets-footercontact .address, .widgets-footercontact .phone {
   float: left;

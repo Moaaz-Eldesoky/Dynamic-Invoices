@@ -7,7 +7,7 @@ import { LoginComponent } from './Authentication/login/login.component';
 import { RegisterComponent } from './Authentication/register/register.component';
 import { DashboardComponent } from './Dashboard/dashboard/dashboard.component';
 import { InvoiceUploadComponent } from './Invoice-Upload/invoice-upload/invoice-upload.component';
-import { InvoiceManagementComponent } from './Invoice-Upload/invoice-management/invoice-management.component';
+import { InvoiceManagementComponent } from './Invoice Management/invoice-management/invoice-management.component';
 import { CurrencyExchangeComponent } from './Currency-Exchange-Rate/currency-exchange/currency-exchange.component';
 import { PriceAdjustmentComponent } from './Product-Price-Adjustment/price-adjustment/price-adjustment.component';
 import { NotificationComponentComponent } from './Notification-Component/notification-component/notification-component.component';

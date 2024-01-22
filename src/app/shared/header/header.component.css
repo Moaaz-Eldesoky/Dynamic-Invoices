@@ -1,69 +1,21 @@
 .header {
-	height: 40rem;
+  background-color: #DDD;
+  height: 130px;
+  text-align: center;
+  padding-top: 20px;
 }
-
-.orange {
-	height: 30rem;
-	background-color: #DDD;
-	position: relative;
+.header img{
+  height: 100px;
 }
-
-.grey {
-	height: 20rem;
-	background-color: #DDD;
-	position: relative;
-}
-
-/* header {
-	position: absolute;
-	top: 70px;
-	left: 10%;
-} */
-
-
-/* Limit the width of the carousel container */
-
-
-.carousel {
-	max-width: 1200px;
-
-	margin: 0 auto;
-  position: absolute;
-  top: 350px;
-	left: 10%;
-}
-
-.custom-image-class {
-	height: 250px;
-	width: 100%;
-	border-radius: 10px;
-}
-
-.item-details {
-	background-color: #333333;
-	color: #fff;
-	padding: 20px 10px;
-	text-align: left;
-}
-
-h5 {
-	margin: 0 0 15px;
-	font-size: 18px;
-	line-height: 18px;
-}
-
-span {
-	color: red;
-	float: right;
-	padding-right: 20px;
-}
-
-p {
-	font-size: 14px;
-}
-
-.item {
-	text-align: center;
-	padding: 20px;
-	margin-bottom: 80px;
+.cyrcle{
+  border: 1px solid ;
+  width: 35px;
+  height: 35px;
+  font-size: 20px;
+  text-align: center;
+  border-radius: 50%;
+  background-color: #0b9bfe;
+  color: #FFF;
+  border-color: #0b9bfe;
+  margin: 0 auto;
 }

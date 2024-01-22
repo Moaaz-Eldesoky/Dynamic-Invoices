@@ -3,12 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './Authentication/login/login.component';
 import { RegisterComponent } from './Authentication/register/register.component';
 import { DashboardComponent } from './Dashboard/dashboard/dashboard.component';
-import { InvoiceManagementComponent } from './Invoice-Upload/invoice-management/invoice-management.component';
+import { InvoiceManagementComponent } from './Invoice Management/invoice-management/invoice-management.component';
+import { InvoiceUploadComponent } from './Invoice-Upload/invoice-upload/invoice-upload.component';
 
 const routes: Routes = [
   {path:"login", component:LoginComponent},
   {path:"register",component:RegisterComponent},
   {path:"dashbord",component:DashboardComponent},
+  {path:"invoiceupl",component:InvoiceUploadComponent},
   {path:"invoicemgm",component:InvoiceManagementComponent}
 ];
 

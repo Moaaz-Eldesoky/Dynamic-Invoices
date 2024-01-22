@@ -19,4 +19,7 @@ export class NavbarComponent implements OnInit {
     // this.cartItems = JSON.parse(localStorage.getItem("cart")!)
     // console.log("cartItems:"+this.cartItems)
   }
+  performSearch() {
+    // Your search logic here
+  }
 }

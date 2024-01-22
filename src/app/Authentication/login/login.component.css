@@ -58,3 +58,10 @@ button {
 button:hover {
   background-color: #0056b3;
 }
+.register{
+  margin-top: 10px;
+}
+.register p{
+  display: inline;
+  margin-right: 10px;
+}

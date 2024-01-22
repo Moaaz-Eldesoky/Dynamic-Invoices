@@ -1,1 +1,29 @@
-<p>invoice-upload works!</p>
+<div class="container-fluid">
+  <div class="desc">
+    <h1>Upload Your Invoice Now</h1>
+    <p>Upload your invoice as an Excel sheet with extensions .xls or .xlsx</p>
+    <div class="upload-container">
+      <div class="upload-btn-wrapper">
+        <button class="btn btn-success">Select An EXCEL File</button>
+        <input type="file" name="file" id="fileInput" />
+      </div>
+      <div class="clouds mx-2">
+        <div class="dropbox my-1">
+          <i class="fa-brands fa-dropbox"></i>
+        </div>
+        <div class="g-drive">
+          <i class="fa-brands fa-google-drive"></i>
+        </div>
+      </div>
+    </div>
+    <div id="dropArea" class="drop-area" *ngIf="!file">
+      <input type="file" (change)="getFile($event)"/>
+      <h6>Drag and Drop your Invoice her</h6>
+    </div>
+    <div *ngIf="file">
+      file name: {{file.name}} <br>
+      <button (click)="file=undefined">Clear file</button>
+      <button (click)="uploadFile()">Upload File</button>
+    </div>
+  </div>
+</div>
