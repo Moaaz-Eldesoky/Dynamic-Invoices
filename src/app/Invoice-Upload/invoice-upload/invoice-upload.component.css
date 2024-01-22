@@ -1,5 +1,5 @@
 .desc {
-  margin: 40px 10px;
+  margin: 60px 10px;
   text-align: center;
 }
 .upload-container{
@@ -17,15 +17,18 @@
   padding: 15px 10px;
   font-size: 20px;
   margin-top: 40px;
+  box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.5);
+  margin-bottom: 20px;
 }
 
-.btn {
+
+.main-button {
   border: none;
   color: #FFF;
   background-color: #e5322d;
   padding: 8px 20px;
   border-radius: 8px;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: bold;
 }
 
@@ -44,6 +47,8 @@
 }
 .clouds{
   margin-top: 41px;
+  margin-bottom: 20px;
+
 }
 .clouds i{
   padding-top: 9px;
@@ -57,6 +62,7 @@
   color: #FFF;
   font-size: 18px;
   margin: 0 10px;
+  box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.5);
 }
 .drop-area {
   border: 2px dashed gray;
@@ -65,9 +71,9 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  margin-top: 20px;
+  /* margin-top: 20px; */
   width: 80%;
-  margin: 50px auto;
+  margin: 30px auto;
 
 }
 .drop-area input{
@@ -80,7 +86,6 @@
 .drop-area h6{
   position: absolute;
   font-size: 24px;
-  /* font-weight: bold; */
   color: #a7a7a7;
 }
 
