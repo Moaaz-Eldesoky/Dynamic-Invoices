@@ -5,7 +5,7 @@
     <div class="upload-container">
       <div class="upload-btn-wrapper">
         <button class="btn btn-success main-button">Select An EXCEL File</button>
-        <input type="file" name="file" id="fileInput" />
+        <input type="file" name="file" id="fileInput" (change)="getFile($event)" />
       </div>
       <div class="clouds mx-2">
         <div class="dropbox my-1">

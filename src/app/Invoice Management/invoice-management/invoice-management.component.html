@@ -1,1 +1,83 @@
-<p>invoice-management works!</p>
+<!-- invoice-management.component.html -->
+<div class="container">
+  <div class="invoice-mgm">
+    <div *ngIf="uploadedData.length > 0" class="automatic">
+      <h3>Uploaded Data</h3>
+      <button class="btn btn-primary ">Add new product</button>
+      <button class="btn btn-primary mx-2">Up</button>
+      <button class="btn btn-primary mx-2">Down</button>
+      <button class="btn btn-primary mx-2">Import</button>
+      <button class="btn btn-primary mx-2">Export</button>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">Select</th>
+            <th scope="col">product name</th>
+            <th scope="col">purchose price</th>
+            <th scope="col">profit margin</th>
+            <th scope="col">selling price</th>
+            <th scope="col">modefied purchose price</th>
+            <th scope="col">modefied selling price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of uploadedData">
+            <td>
+              <input type="checkbox" [(ngModel)]="row.selected">
+            </td>
+            <td>{{ row.product_name }}</td>
+            <td>{{ row.purchose_price }}</td>
+            <td>{{ row.profit_margin }}</td>
+            <td>{{ row.selling_price }}</td>
+            <td>{{ row.modefied_purchose_price }}</td>
+            <td>{{ row.modefied_selling_price }}</td>
+          </tr>
+          <tr>
+            <td>
+              <input type="checkbox" [(ngModel)]="emptyRow.selected">
+            </td>
+            <td><input type="text" [(ngModel)]="emptyRow.product_name"></td>
+            <td><input type="number" [(ngModel)]="emptyRow.purchose_price"></td>
+            <td><input type="number" [(ngModel)]="emptyRow.profit_margin"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div *ngIf="uploadedData.length == 0" class="manual">
+      <h3>insert your invoice Data</h3>
+      <button class="btn btn-primary ">Add new product</button>
+      <button class="btn btn-primary mx-2">Up</button>
+      <button class="btn btn-primary mx-2">Down</button>
+      <button class="btn btn-primary mx-2">Import</button>
+      <button class="btn btn-primary mx-2">Export</button>
+
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">product name</th>
+            <th scope="col">purchose price</th>
+            <th scope="col">profit margin</th>
+            <th scope="col">selling price</th>
+            <th scope="col">modefied purchose price</th>
+            <th scope="col">modefied selling price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><input type="text"></td>
+            <td><input type="number"></td>
+            <td><input type="number"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+  </div>
