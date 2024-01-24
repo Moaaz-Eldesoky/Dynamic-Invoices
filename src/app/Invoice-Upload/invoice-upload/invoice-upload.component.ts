@@ -9,6 +9,8 @@ import { ExcelService } from 'src/app/excel.service';
 export class InvoiceUploadComponent {
   file:any ;
   // file:any = {name:"test file",size:"30M"};
+  file:any ;
+  // file:any = {name:"test file",size:"30M"};
   http: any;
   constructor(private router:Router, private excel:ExcelService){}
   getFile(e:any){
@@ -20,16 +22,3 @@ export class InvoiceUploadComponent {
   this.router.navigate(['/invoicemgm'])
   }
 }
-
-
-
-
-
-
-
-
-  //   let formData = new FormData();
-  //   formData.set('file', this.file);
-
-  //   //call API
-  //   this.http.post('......URL.....',formData).subscribe((res)=>{})
