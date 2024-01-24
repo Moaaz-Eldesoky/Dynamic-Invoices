@@ -4,8 +4,8 @@
     <div *ngIf="uploadedData.length > 0" class="automatic">
       <h3>Uploaded Data</h3>
       <button class="btn btn-primary ">Add new product</button>
-      <button class="btn btn-primary mx-2">Up</button>
-      <button class="btn btn-primary mx-2">Down</button>
+      <button class="btn btn-primary mx-2" (click)="moveUp()">Up</button>
+      <button class="btn btn-primary mx-2" (click)="moveDown()">Down</button>
       <button class="btn btn-primary mx-2">Import</button>
       <button class="btn btn-primary mx-2">Export</button>
       <table class="table table-bordered">

@@ -8,17 +8,22 @@ import { ExcelService } from 'src/app/excel.service';
 })
 export class InvoiceUploadComponent {
   file:any ;
-  // file:any = {name:"test file",size:"30M"};
-  file:any ;
-  // file:any = {name:"test file",size:"30M"};
-  http: any;
-  constructor(private router:Router, private excel:ExcelService){}
-  getFile(e:any){
+  local_file: any = [{
+    modefied_purchose_price: "20", modefied_selling_price: "28", product_name: "rice", profit_margin: "10", purchose_price: "15", selected: true, selling_price: "16.5"
+  }, {
+    modefied_purchose_price: "20", modefied_selling_price: "28", product_name: "oil", profit_margin: "10", purchose_price: "15", selected: true, selling_price: "16.5"
+  },{
+    modefied_purchose_price: "20", modefied_selling_price: "28", product_name: "cheese", profit_margin: "10", purchose_price: "15", selected: true, selling_price: "16.5"
+  }]
+  constructor(private router: Router, private excel: ExcelService) { }
+  getFile(e: any) {
     this.file = e?.target.files[0];
-    console.log('file',this.file)
+
   }
-  uploadFile(){
-  this.excel.excelToJson(this.file)
-  this.router.navigate(['/invoicemgm'])
+  uploadFile() {
+    this.excel.excelToJson(this.file)
+    this.router.navigate(['/invoicemgm'])
+    console.log("local file:"+ this.local_file)
+    console.log('file', this.file)
   }
 }
