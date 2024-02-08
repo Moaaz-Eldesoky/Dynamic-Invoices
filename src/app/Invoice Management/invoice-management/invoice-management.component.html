@@ -3,7 +3,7 @@
   <div class="invoice-mgm">
     <div *ngIf="uploadedData.length > 0" class="automatic">
       <h3>Uploaded Data</h3>
-      <button class="btn btn-primary ">Add new product</button>
+      <button class="btn btn-primary" (click)="active_input()">Add new product</button>
       <button class="btn btn-primary mx-2" (click)="moveUp()">Up</button>
       <button class="btn btn-primary mx-2" (click)="moveDown()">Down</button>
       <button class="btn btn-primary mx-2">Import</button>
@@ -25,30 +25,35 @@
             <td>
               <input type="checkbox" [(ngModel)]="row.selected">
             </td>
-            <td>{{ row.product_name }}</td>
-            <td>{{ row.purchose_price }}</td>
-            <td>{{ row.profit_margin }}</td>
+            <td><input type="text" value="{{ row.product_name }}"></td>
+            <td><input type="number" value="{{ row.purchose_price }}"></td>
+            <td><input type="number" value="{{ row.profit_margin }}"></td>
             <td>{{ row.selling_price }}</td>
             <td>{{ row.modefied_purchose_price }}</td>
             <td>{{ row.modefied_selling_price }}</td>
           </tr>
-          <tr>
+          <tr *ngIf="showEmptyRow">
             <td>
-              <input type="checkbox" [(ngModel)]="emptyRow.selected">
+              <input required type="checkbox" [(ngModel)]="emptyRow.selected" >
             </td>
-            <td><input type="text" [(ngModel)]="emptyRow.product_name"></td>
-            <td><input type="number" [(ngModel)]="emptyRow.purchose_price"></td>
-            <td><input type="number" [(ngModel)]="emptyRow.profit_margin"></td>
+            <td><input required type="text" class="addNewProduct" #addNewProduct [(ngModel)]="emptyRow.product_name"></td>
+            <td><input required type="number" [(ngModel)]="emptyRow.purchose_price"></td>
+            <td><input required type="number" [(ngModel)]="emptyRow.profit_margin"></td>
             <td></td>
             <td></td>
             <td></td>
           </tr>
         </tbody>
       </table>
+      <div class="form-buttons mt-2" *ngIf="uploadedData.length > 0 ">
+        <button class="btn btn-primary">Update</button>
+        <button class="btn btn-primary mx-2">Save Invoice</button>
+        <button class="btn btn-success ">Download</button>
+      </div>
     </div>
     <div *ngIf="uploadedData.length == 0" class="manual">
       <h3>insert your invoice Data</h3>
-      <button class="btn btn-primary ">Add new product</button>
+      <button class="btn btn-primary " (click)="active_input()">Add new product</button>
       <button class="btn btn-primary mx-2">Up</button>
       <button class="btn btn-primary mx-2">Down</button>
       <button class="btn btn-primary mx-2">Import</button>
@@ -67,15 +72,20 @@
         </thead>
         <tbody>
           <tr>
-            <td><input type="text"></td>
-            <td><input type="number"></td>
-            <td><input type="number"></td>
+            <td><input required type="text" class="addNewProduct" #addNewProduct></td>
+            <td><input required type="number"></td>
+            <td><input required type="number"></td>
             <td></td>
             <td></td>
             <td></td>
           </tr>
         </tbody>
       </table>
+      <div class="form-buttons" *ngIf="uploadedData.length > 0">
+        <button class="btn btn-primary">Update</button>
+        <button class="btn btn-primary mx-2">Save Invoice</button>
+        <button class="btn btn-success ">Download</button>
+      </div>
     </div>
 
   </div>

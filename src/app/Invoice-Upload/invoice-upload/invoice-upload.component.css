@@ -19,8 +19,8 @@
   margin-top: 40px;
   box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.5);
   margin-bottom: 20px;
+  cursor: pointer;
 }
-
 
 .main-button {
   border: none;
@@ -52,6 +52,12 @@
 }
 .clouds i{
   padding-top: 9px;
+}
+.clouds button{
+  border: none;
+  background-color: #e5322d;
+  color: #FFF;
+  border-radius: 50%;
 }
 .dropbox,
 .g-drive {
