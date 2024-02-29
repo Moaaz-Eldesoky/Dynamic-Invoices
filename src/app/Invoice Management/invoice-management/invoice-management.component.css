@@ -21,7 +21,7 @@ th {
   height: 100%;
   border: none;
 }
-.invoice-mgm h3{
+.main-header{
   margin-top: 50px;
   margin-bottom: 30px;
   text-align: center;
@@ -32,5 +32,24 @@ th {
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
-}
 
+}
+.top-part{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.dollar-price{
+  background-color: #e5322d;
+  border-radius: 5px;
+  box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.5);
+  width: 200px;
+  height: 120px;
+  text-align: center;
+  padding-top: 10px;
+
+}
+.dollar-price {
+font-weight: bold;
+color: white;
+}

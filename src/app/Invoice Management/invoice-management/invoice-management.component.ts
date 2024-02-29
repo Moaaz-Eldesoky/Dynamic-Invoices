@@ -2,6 +2,7 @@ import { Component, OnDestroy, ElementRef, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ExcelService } from 'src/app/excel.service';
 import { LocalStorageService } from 'src/app/local-storage.service';
+import { NgbAlertModule, NgbDatepickerModule, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -9,10 +10,10 @@ interface UploadedDataItem {
   product_name: string;
   purchose_price: number;
   profit_margin: number;
-  selling_price: number;
-  modefied_purchose_price: number;
-  modefied_selling_price: number;
-  selected: boolean;
+  selling_price?: number;
+  modefied_purchose_price?: number;
+  modefied_selling_price?: number;
+  selected?: boolean;
 }
 
 
@@ -37,6 +38,7 @@ export class InvoiceManagementComponent implements OnDestroy {
   };
 
   showEmptyRow: boolean = false;
+
   private excelDataSubscription: Subscription;
 
   constructor(private excelService: ExcelService, private local_storage:LocalStorageService) {
@@ -44,7 +46,12 @@ export class InvoiceManagementComponent implements OnDestroy {
       this.uploadedData = data;
       this.uploadedData = data.map(item => ({ ...item, selected: false }));
       console.log(this.uploadedData)
-      local_storage.getData("invoice-data").length<=0?local_storage.saveData("invoice-data",this.uploadedData):console.log("the localhost have data")
+      if(local_storage.getData("invoice-data").length<=0){
+        local_storage.saveData("invoice-data",this.uploadedData);
+        this.showEmptyRow = true;
+      }
+      else{console.log("the localhost have data")
+    }
     });
 
   }
@@ -107,6 +114,20 @@ export class InvoiceManagementComponent implements OnDestroy {
     this.showEmptyRow = true;
 
     this.addNewProduct.nativeElement.focus();
+  }
+  save_new_item() {
+    // Create a new object with the values from emptyRow
+    const newItem: UploadedDataItem = { ...this.emptyRow };
+
+    // Push the new object to uploadedData
+    this.uploadedData.push(newItem);
+
+    console.log("hello......");
+
+    // Reset the values of emptyRow
+    this.emptyRow.product_name = "";
+    this.emptyRow.purchose_price = 0;
+    this.emptyRow.profit_margin = 0;
   }
   ngOnDestroy(): void {
     this.excelDataSubscription.unsubscribe();
