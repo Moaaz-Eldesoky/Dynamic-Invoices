@@ -18,6 +18,13 @@ import { HeaderComponent } from './shared/header/header.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { ExcelService } from './excel.service';
 import { FormsModule } from '@angular/forms';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
+
+
 
 
 @NgModule({
@@ -39,9 +46,13 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatMomentDateModule
   ],
-  providers: [ExcelService],
+  providers: [ExcelService, provideAnimationsAsync()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

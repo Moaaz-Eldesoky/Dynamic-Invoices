@@ -38,6 +38,8 @@
   left: 0;
   top: 0;
   opacity: 0;
+  height: 100%;
+  width: 100%;
 }
 
 .upload-btn-wrapper label {

@@ -1,11 +1,16 @@
 <!-- invoice-management.component.html -->
 <div class="container">
   <div class="invoice-mgm">
-    <!-- <div *ngIf="uploadedData.length > 0" class="automatic"> -->
-    <h3 class="main-header">Uploaded Data</h3>
+    <div class="first-layer">
+      <h3 class="main-header">Manage Your Invoice</h3>
+      <div class="dollar-price">
+        <h3>1$ US dollar</h3>
+        <h3>73.80<span> EG</span></h3>
+        <p>18-3-2024</p>
+      </div>
+    </div>
+
     <div class="top-part">
-
-
       <div class="controle-buttons">
         <button class="btn btn-primary" (click)="active_input()">Add new product</button>
         <button class="btn btn-primary mx-2" (click)="moveUp()">Up</button>
@@ -13,10 +18,12 @@
         <button class="btn btn-primary mx-2">Import</button>
         <button class="btn btn-primary mx-2">Export</button>
       </div>
-      <div class="dollar-price">
-        <h5>1$ US dollar</h5>
-        <h3>73.80<span> EG</span></h3>
-        <p>18-3-2024</p>
+      <div class="invoice-date">
+        <mat-form-field>
+          <input matInput [matDatepicker]="datepicker" placeholder="Choose a date">
+          <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+          <mat-datepicker #datepicker></mat-datepicker>
+        </mat-form-field>
       </div>
     </div>
     <table class="table table-bordered">
@@ -59,7 +66,7 @@
       </tbody>
     </table>
     <div class="form-buttons mt-2" *ngIf="uploadedData.length > 0 ">
-      <button class="btn btn-primary"(click)="save_new_item()">Update</button>
+      <button class="btn btn-primary" (click)="save_new_item()">Update</button>
       <button class="btn btn-primary mx-2">Save Invoice</button>
       <button class="btn btn-success ">Download</button>
     </div>

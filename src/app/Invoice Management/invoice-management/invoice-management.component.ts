@@ -5,6 +5,7 @@ import { LocalStorageService } from 'src/app/local-storage.service';
 
 
 
+
 interface UploadedDataItem {
   product_name: string;
   purchose_price: number;
@@ -37,7 +38,7 @@ export class InvoiceManagementComponent implements OnDestroy {
   };
 
   showEmptyRow: boolean = false;
-
+  tempArr:object[]=[]
   private excelDataSubscription: Subscription;
 
   constructor(private excelService: ExcelService, private local_storage:LocalStorageService) {
@@ -120,8 +121,8 @@ export class InvoiceManagementComponent implements OnDestroy {
 
     // Push the new object to uploadedData
     this.uploadedData.push(newItem);
+    this.local_storage.saveData("invoice-data",this.uploadedData);
 
-    console.log("hello......");
 
     // Reset the values of emptyRow
     this.emptyRow.product_name = "";

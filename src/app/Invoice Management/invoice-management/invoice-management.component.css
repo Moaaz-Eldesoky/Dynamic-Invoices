@@ -1,4 +1,5 @@
 /* invoice-management.component.css */
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 
 table {
   width: 100%;
@@ -37,7 +38,18 @@ th {
 .top-part{
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: flex-start;
+}
+
+.first-layer{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin: 40px 0px;
+}
+.first-layer h3{
+  font-size:40px;
+  font-weight: bold;
 }
 .dollar-price{
   background-color: #e5322d;
@@ -46,10 +58,16 @@ th {
   width: 200px;
   height: 120px;
   text-align: center;
-  padding-top: 10px;
+  padding: 10px;
 
 }
-.dollar-price {
-font-weight: bold;
-color: white;
+
+.dollar-price h3{
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
 }
+.dollar-price{
+  color: white;
+}
+
