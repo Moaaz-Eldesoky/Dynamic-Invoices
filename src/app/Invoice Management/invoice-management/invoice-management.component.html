@@ -17,10 +17,11 @@
         <button class="btn btn-primary mx-2" (click)="moveDown()">Down</button>
         <button class="btn btn-primary mx-2">Import</button>
         <button class="btn btn-primary mx-2">Export</button>
+        <button *ngIf="areAnyRowsSelected()" class="btn btn-danger mx-2">Delete</button>
       </div>
       <div class="invoice-date">
         <mat-form-field>
-          <input matInput [matDatepicker]="datepicker" placeholder="Choose a date">
+          <input matInput [matDatepicker]="datepicker" placeholder="Choose Invoice Date">
           <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
           <mat-datepicker #datepicker></mat-datepicker>
         </mat-form-field>

@@ -23,7 +23,7 @@ interface UploadedDataItem {
   styleUrls: ['./invoice-management.component.css']
 })
 export class InvoiceManagementComponent implements OnDestroy {
-  @ViewChild('addNewProduct') addNewProduct!:ElementRef
+  @ViewChild('addNewProduct') addNewProduct!: ElementRef
 
   uploadedData: UploadedDataItem[] = [];
 
@@ -38,68 +38,69 @@ export class InvoiceManagementComponent implements OnDestroy {
   };
 
   showEmptyRow: boolean = false;
-  tempArr:object[]=[]
+  tempArr: object[] = []
   private excelDataSubscription: Subscription;
 
-  constructor(private excelService: ExcelService, private local_storage:LocalStorageService) {
+  constructor(private excelService: ExcelService, private local_storage: LocalStorageService) {
     this.excelDataSubscription = this.excelService.uploadedData$.subscribe(data => {
       this.uploadedData = data;
       this.uploadedData = data.map(item => ({ ...item, selected: false }));
       console.log(this.uploadedData)
-      if(local_storage.getData("invoice-data").length<=0){
-        local_storage.saveData("invoice-data",this.uploadedData);
+      if (local_storage.getData("invoice-data").length <= 0) {
+        local_storage.saveData("invoice-data", this.uploadedData);
         this.showEmptyRow = true;
       }
-      else{console.log("the localhost have data")
-    }
+      else {
+        console.log("the localhost have data")
+      }
     });
 
   }
-  ngOnInit():void{
+  ngOnInit(): void {
     const savedData = this.local_storage.getData("invoice-data");
     if (savedData) {
       this.uploadedData = savedData;
     }
   }
-  checkMoveAbility():boolean{
-    const items=this.uploadedData.filter(e=>{e.selected})
+  checkMoveAbility(): boolean {
+    const items = this.uploadedData.filter(e => { e.selected })
     return items.length <= 1;
   }
   moveUp() {
     console.log(this.checkMoveAbility())
-    if (this.checkMoveAbility()){
+    if (this.checkMoveAbility()) {
       let selectedRowIndex = this.uploadedData.findIndex(row => row.selected)
       console.log("selected index val is:" + selectedRowIndex)
       if (selectedRowIndex > 0) {
-      this.moveRowUp(selectedRowIndex);
+        this.moveRowUp(selectedRowIndex);
+      }
     }
-    }
-    else{
+    else {
       alert("Not Allowed to move more than one item")
     }
   }
   moveDown() {
-    if (this.checkMoveAbility()){
+    if (this.checkMoveAbility()) {
       let selectedRowIndex = this.uploadedData.findIndex(row => row.selected)
       if (selectedRowIndex < this.uploadedData.length - 1) {
-      this.moveRowDown(selectedRowIndex);
+        this.moveRowDown(selectedRowIndex);
       }
     }
-    else{
+    else {
       alert("Not Allowed to move more than one item")
     }
   }
 
   moveRowUp(index: number): void {
-      // Swap the selected row with the row above it
-      [this.uploadedData[index - 1], this.uploadedData[index]] = [this.uploadedData[index], this.uploadedData[index - 1]];
+    // Swap the selected row with the row above it
+    [this.uploadedData[index - 1], this.uploadedData[index]] = [this.uploadedData[index], this.uploadedData[index - 1]];
   }
 
   moveRowDown(index: number): void {
-      // Swap the selected row with the row below it
-      [this.uploadedData[index], this.uploadedData[index + 1]] = [this.uploadedData[index + 1], this.uploadedData[index]];
+    // Swap the selected row with the row below it
+    [this.uploadedData[index], this.uploadedData[index + 1]] = [this.uploadedData[index + 1], this.uploadedData[index]];
   }
-  active_input(){
+  active_input() {
     if (!this.emptyRow) {
       this.emptyRow = {
         product_name: '',
@@ -121,7 +122,7 @@ export class InvoiceManagementComponent implements OnDestroy {
 
     // Push the new object to uploadedData
     this.uploadedData.push(newItem);
-    this.local_storage.saveData("invoice-data",this.uploadedData);
+    this.local_storage.saveData("invoice-data", this.uploadedData);
 
 
     // Reset the values of emptyRow
@@ -129,6 +130,11 @@ export class InvoiceManagementComponent implements OnDestroy {
     this.emptyRow.purchose_price = 0;
     this.emptyRow.profit_margin = 0;
   }
+  // Method to check if any rows are selected
+  areAnyRowsSelected(): boolean {
+    return this.uploadedData.some(row => row.selected);
+  }
+
   ngOnDestroy(): void {
     this.excelDataSubscription.unsubscribe();
   }
