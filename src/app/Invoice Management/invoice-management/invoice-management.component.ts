@@ -15,6 +15,7 @@ interface UploadedDataItem {
 interface Invoice {
   invoice_number: number;
   invoice_date: Date;
+  invoice_company: string;
   products: UploadedDataItem[];
 }
 @Component({
@@ -28,9 +29,12 @@ export class InvoiceManagementComponent implements OnDestroy {
   uploadedData: UploadedDataItem[] = [];
   invoice_date: any;
   invoice_num: any;
+  invoice_company: any;
+  //responsable for temprory saving one invoice data either uploaded or comming from my invoices.
   invoiceDetails: Invoice[] = [];
+  //responsable for saving all saved invoices
   allInvoices: any[] = [];
-
+  //to add now empty row.
   emptyRow: UploadedDataItem = {
     product_name: '',
     purchose_price: 0,
@@ -42,18 +46,16 @@ export class InvoiceManagementComponent implements OnDestroy {
   };
 
   showEmptyRow: boolean = false;
-  tempArr: object[] = [];
-  private excelDataSubscription: Subscription;
 
   constructor(
     private excelService: ExcelService,
-    private local_storage: LocalStorageService
+    private local_storage: LocalStorageService,
+    private excelDataSubscription: Subscription
   ) {
     this.excelDataSubscription = this.excelService.uploadedData$.subscribe(
       (data) => {
         this.uploadedData = data;
         this.uploadedData = data.map((item) => ({ ...item, selected: false }));
-        console.log(this.uploadedData);
 
         if (
           !local_storage.getData('invoice-data') ||
@@ -163,12 +165,13 @@ export class InvoiceManagementComponent implements OnDestroy {
     }
   }
   compine_invoice_details() {
-    if (!this.invoice_num || !this.invoice_date) {
+    if (!this.invoice_num || !this.invoice_date || !this.invoice_company) {
       alert('please fill the mandatory fields before save....');
     } else {
       const newInvoice: Invoice = {
         invoice_number: this.invoice_num,
         invoice_date: this.invoice_date,
+        invoice_company: this.invoice_company,
         products: this.uploadedData,
       };
       this.invoiceDetails.push(newInvoice);

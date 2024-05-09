@@ -9,28 +9,37 @@
         <p>18-3-2024</p>
       </div>
     </div>
+    <div class="row">
+      <div class="top-part">
+        <div class="inv-num col-md-4">
+          <label for="invoice-num">Invoice Number</label>
+          <input type="number" id="invoice-num" placeholder="invoice # [no]" [(ngModel)]="invoice_num">
+        </div>
+        <div class="inv-num col-md-4">
+          <label for="invoice-company">Company</label>
+          <input type="text" id="invoice-company" placeholder="Company Name" [(ngModel)]="invoice_company">
+        </div>
+        <div class="invoice-date col-md-4">
+          <label for="invoice-date">Invoice Date</label>
+          <mat-form-field>
+            <input matInput [matDatepicker]="datepicker" id="invoice-date" class="invoice-date"
+              placeholder="Choose Invoice Date" [(ngModel)]="invoice_date">
+            <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+            <mat-datepicker #datepicker></mat-datepicker>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="controle-buttons col-md-12 mb-3">
+          <button class="btn btn-primary" (click)="active_input()">Add new product</button>
+          <button class="btn btn-primary mx-2" (click)="moveUp()">Up</button>
+          <button class="btn btn-primary mx-2" (click)="moveDown()">Down</button>
+          <button class="btn btn-primary mx-2">Import</button>
+          <button class="btn btn-primary mx-2">Export</button>
+          <button *ngIf="areAnyRowsSelected()" class="btn btn-danger mx-2">Delete</button>
+        </div>
+      </div>
 
-    <div class="top-part">
-      <div class="controle-buttons">
-        <button class="btn btn-primary" (click)="active_input()">Add new product</button>
-        <button class="btn btn-primary mx-2" (click)="moveUp()">Up</button>
-        <button class="btn btn-primary mx-2" (click)="moveDown()">Down</button>
-        <button class="btn btn-primary mx-2">Import</button>
-        <button class="btn btn-primary mx-2">Export</button>
-        <button *ngIf="areAnyRowsSelected()" class="btn btn-danger mx-2">Delete</button>
-      </div>
-      <div class="inv-num">
-        <label for="invoice-num">Invoice Number</label>
-        <input type="number" id="invoice-num" placeholder="invoice # [no]" [(ngModel)]="invoice_num">
-      </div>
-      <div class="invoice-date">
-        <mat-form-field>
-          <input matInput [matDatepicker]="datepicker" class="date_input" placeholder="Choose Invoice Date"
-            [(ngModel)]="invoice_date">
-          <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
-          <mat-datepicker #datepicker></mat-datepicker>
-        </mat-form-field>
-      </div>
     </div>
     <table class="table table-bordered">
       <thead>

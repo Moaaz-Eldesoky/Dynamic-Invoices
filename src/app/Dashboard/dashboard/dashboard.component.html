@@ -1,8 +1,15 @@
-<div class="container" *ngFor=" let invoice in savedInvoices"></div>
-<div class="card text-center mb-3" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title">Special title treatment</h5>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3" *ngFor="let invoice of savedInvoices">
+      <div class="card text-center mb-5 mt-5">
+        <div class="card-body">
+          <h2 class="card-title">{{invoice[0].invoice_company}}</h2>
+          <p class="card-text">Invoice Number: {{invoice[0].invoice_number}}</p>
+          <p class="card-text">Invoice Date: {{invoice[0].invoice_date}}</p>
+          <a routerLink="/invoicemgm" class="btn btn-primary"
+            (click)="changeLocalhostData(invoice[0].invoice_number)">Manage Invoice</a>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
