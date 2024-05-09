@@ -3,9 +3,6 @@ import { Subscription } from 'rxjs';
 import { ExcelService } from 'src/app/excel.service';
 import { LocalStorageService } from 'src/app/local-storage.service';
 
-
-
-
 interface UploadedDataItem {
   product_name: string;
   purchose_price: number;
@@ -15,17 +12,24 @@ interface UploadedDataItem {
   modefied_selling_price?: number;
   selected?: boolean;
 }
-
-
+interface Invoice {
+  invoice_number: number;
+  invoice_date: Date;
+  products: UploadedDataItem[];
+}
 @Component({
   selector: 'app-invoice-management',
   templateUrl: './invoice-management.component.html',
-  styleUrls: ['./invoice-management.component.css']
+  styleUrls: ['./invoice-management.component.css'],
 })
 export class InvoiceManagementComponent implements OnDestroy {
-  @ViewChild('addNewProduct') addNewProduct!: ElementRef
+  @ViewChild('addNewProduct') addNewProduct!: ElementRef;
 
   uploadedData: UploadedDataItem[] = [];
+  invoice_date: any;
+  invoice_num: any;
+  invoiceDetails: Invoice[] = [];
+  allInvoices: any[] = [];
 
   emptyRow: UploadedDataItem = {
     product_name: '',
@@ -34,71 +38,84 @@ export class InvoiceManagementComponent implements OnDestroy {
     selling_price: 0,
     modefied_purchose_price: 0,
     modefied_selling_price: 0,
-    selected: false
+    selected: false,
   };
 
   showEmptyRow: boolean = false;
-  tempArr: object[] = []
+  tempArr: object[] = [];
   private excelDataSubscription: Subscription;
 
-  constructor(private excelService: ExcelService, private local_storage: LocalStorageService) {
-    this.excelDataSubscription = this.excelService.uploadedData$.subscribe(data => {
-      this.uploadedData = data;
-      this.uploadedData = data.map(item => ({ ...item, selected: false }));
-      console.log(this.uploadedData)
-      if (local_storage.getData("invoice-data").length <= 0) {
-        local_storage.saveData("invoice-data", this.uploadedData);
-        this.showEmptyRow = true;
-      }
-      else {
-        console.log("the localhost have data")
-      }
-    });
+  constructor(
+    private excelService: ExcelService,
+    private local_storage: LocalStorageService
+  ) {
+    this.excelDataSubscription = this.excelService.uploadedData$.subscribe(
+      (data) => {
+        this.uploadedData = data;
+        this.uploadedData = data.map((item) => ({ ...item, selected: false }));
+        console.log(this.uploadedData);
 
+        if (
+          !local_storage.getData('invoice-data') ||
+          local_storage.getData('invoice-data').length <= 0
+        ) {
+          local_storage.saveData('invoice-data', this.uploadedData);
+          this.showEmptyRow = true;
+        } else {
+          console.log('the localhost have data');
+        }
+      }
+    );
   }
   ngOnInit(): void {
-    const savedData = this.local_storage.getData("invoice-data");
+    const savedData = this.local_storage.getData('invoice-data');
     if (savedData) {
       this.uploadedData = savedData;
     }
   }
   checkMoveAbility(): boolean {
-    const items = this.uploadedData.filter(e => { e.selected })
+    const items = this.uploadedData.filter((e) => {
+      e.selected;
+    });
     return items.length <= 1;
   }
   moveUp() {
-    console.log(this.checkMoveAbility())
+    console.log(this.checkMoveAbility());
     if (this.checkMoveAbility()) {
-      let selectedRowIndex = this.uploadedData.findIndex(row => row.selected)
-      console.log("selected index val is:" + selectedRowIndex)
+      let selectedRowIndex = this.uploadedData.findIndex((row) => row.selected);
+      console.log('selected index val is:' + selectedRowIndex);
       if (selectedRowIndex > 0) {
         this.moveRowUp(selectedRowIndex);
       }
-    }
-    else {
-      alert("Not Allowed to move more than one item")
+    } else {
+      alert('Not Allowed to move more than one item');
     }
   }
   moveDown() {
     if (this.checkMoveAbility()) {
-      let selectedRowIndex = this.uploadedData.findIndex(row => row.selected)
+      let selectedRowIndex = this.uploadedData.findIndex((row) => row.selected);
       if (selectedRowIndex < this.uploadedData.length - 1) {
         this.moveRowDown(selectedRowIndex);
       }
-    }
-    else {
-      alert("Not Allowed to move more than one item")
+    } else {
+      alert('Not Allowed to move more than one item');
     }
   }
 
   moveRowUp(index: number): void {
     // Swap the selected row with the row above it
-    [this.uploadedData[index - 1], this.uploadedData[index]] = [this.uploadedData[index], this.uploadedData[index - 1]];
+    [this.uploadedData[index - 1], this.uploadedData[index]] = [
+      this.uploadedData[index],
+      this.uploadedData[index - 1],
+    ];
   }
 
   moveRowDown(index: number): void {
     // Swap the selected row with the row below it
-    [this.uploadedData[index], this.uploadedData[index + 1]] = [this.uploadedData[index + 1], this.uploadedData[index]];
+    [this.uploadedData[index], this.uploadedData[index + 1]] = [
+      this.uploadedData[index + 1],
+      this.uploadedData[index],
+    ];
   }
   active_input() {
     if (!this.emptyRow) {
@@ -109,7 +126,7 @@ export class InvoiceManagementComponent implements OnDestroy {
         selling_price: 0,
         modefied_purchose_price: 0,
         modefied_selling_price: 0,
-        selected: false
+        selected: false,
       };
     }
     this.showEmptyRow = true;
@@ -122,19 +139,41 @@ export class InvoiceManagementComponent implements OnDestroy {
 
     // Push the new object to uploadedData
     this.uploadedData.push(newItem);
-    this.local_storage.saveData("invoice-data", this.uploadedData);
-
+    this.local_storage.saveData('invoice-data', this.uploadedData);
 
     // Reset the values of emptyRow
-    this.emptyRow.product_name = "";
+    this.emptyRow.product_name = '';
     this.emptyRow.purchose_price = 0;
     this.emptyRow.profit_margin = 0;
   }
   // Method to check if any rows are selected
   areAnyRowsSelected(): boolean {
-    return this.uploadedData.some(row => row.selected);
+    return this.uploadedData.some((row) => row.selected);
   }
 
+  save_invioce() {
+    this.compine_invoice_details();
+    if (this.invoiceDetails.length > 0) {
+      this.allInvoices = this.local_storage.getData('allInvoices') || [];
+      this.allInvoices.push(this.invoiceDetails);
+      this.local_storage.saveData('allInvoices', this.allInvoices);
+      this.invoiceDetails = [];
+    } else {
+      alert('please add the invoice data');
+    }
+  }
+  compine_invoice_details() {
+    if (!this.invoice_num || !this.invoice_date) {
+      alert('please fill the mandatory fields before save....');
+    } else {
+      const newInvoice: Invoice = {
+        invoice_number: this.invoice_num,
+        invoice_date: this.invoice_date,
+        products: this.uploadedData,
+      };
+      this.invoiceDetails.push(newInvoice);
+    }
+  }
   ngOnDestroy(): void {
     this.excelDataSubscription.unsubscribe();
   }

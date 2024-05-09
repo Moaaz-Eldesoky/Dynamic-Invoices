@@ -19,9 +19,14 @@
         <button class="btn btn-primary mx-2">Export</button>
         <button *ngIf="areAnyRowsSelected()" class="btn btn-danger mx-2">Delete</button>
       </div>
+      <div class="inv-num">
+        <label for="invoice-num">Invoice Number</label>
+        <input type="number" id="invoice-num" placeholder="invoice # [no]" [(ngModel)]="invoice_num">
+      </div>
       <div class="invoice-date">
         <mat-form-field>
-          <input matInput [matDatepicker]="datepicker" placeholder="Choose Invoice Date">
+          <input matInput [matDatepicker]="datepicker" class="date_input" placeholder="Choose Invoice Date"
+            [(ngModel)]="invoice_date">
           <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
           <mat-datepicker #datepicker></mat-datepicker>
         </mat-form-field>
@@ -68,7 +73,7 @@
     </table>
     <div class="form-buttons mt-2" *ngIf="uploadedData.length > 0 ">
       <button class="btn btn-primary" (click)="save_new_item()">Update</button>
-      <button class="btn btn-primary mx-2">Save Invoice</button>
+      <button class="btn btn-primary mx-2" (click)="save_invioce()">Save Invoice</button>
       <button class="btn btn-success ">Download</button>
     </div>
   </div>
