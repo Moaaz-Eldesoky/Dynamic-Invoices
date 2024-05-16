@@ -3,11 +3,11 @@
     <div class="col-md-3" *ngFor="let invoice of savedInvoices">
       <div class="card text-center mb-5 mt-5">
         <div class="card-body">
-          <h2 class="card-title">{{invoice[0].invoice_company}}</h2>
-          <p class="card-text">Invoice Number: {{invoice[0].invoice_number}}</p>
-          <p class="card-text">Invoice Date: {{invoice[0].invoice_date}}</p>
+          <h2 class="card-title">{{ invoice?.invoice_company }}</h2>
+          <p class="card-text">Invoice Number: {{ invoice?.invoice_number }}</p>
+          <p class="card-text">Invoice Date: {{ invoice?.invoice_date }}</p>
           <a routerLink="/invoicemgm" class="btn btn-primary"
-            (click)="changeLocalhostData(invoice[0].invoice_number)">Manage Invoice</a>
+            (click)="changeLocalhostData(invoice[0]?.invoice_number)">Manage Invoice</a>
         </div>
       </div>
     </div>

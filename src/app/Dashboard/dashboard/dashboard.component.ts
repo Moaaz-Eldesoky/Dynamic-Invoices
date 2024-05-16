@@ -19,7 +19,7 @@ export class DashboardComponent {
   }
   retriveInvocesData() {
     this.savedInvoices = this.localStorage.getData('allInvoices');
-    console.log('savedInvoices:' + this.savedInvoices);
+    console.log('savedInvoices:' + JSON.stringify(this.savedInvoices));
   }
   changeLocalhostData(inv_num: any) {
     this.selectedInvoice = this.savedInvoices.find(
