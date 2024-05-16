@@ -55,20 +55,15 @@ export class InvoiceManagementComponent implements OnDestroy {
     this.excelDataSubscription = this.excelService.uploadedData$.subscribe(
       (data: Invoice[]) => {
         if (!data || data.length === 0) return;
-
-        this.uploadedData = data
-          .filter((invoice) => invoice.invoice_number !== null) // Filter out invoices with null invoice_number
-          .map((invoice) => ({
-            invoice_number: invoice.invoice_number,
-            invoice_date: invoice.invoice_date,
-            invoice_company: invoice.invoice_company,
-            products: invoice.products.map((item) => ({
-              ...item,
-              selected: false,
-            })),
-          }));
-
-        console.log(this.uploadedData);
+        this.uploadedData = data.map((invoice) => ({
+          invoice_number: invoice.invoice_number,
+          invoice_date: invoice.invoice_date,
+          invoice_company: invoice.invoice_company,
+          products: invoice.products.map((item) => ({
+            ...item,
+            selected: false,
+          })),
+        }));
 
         if (!this.localStorageService.getData('invoice-data')) {
           this.localStorageService.saveData('invoice-data', this.uploadedData);
@@ -84,14 +79,8 @@ export class InvoiceManagementComponent implements OnDestroy {
     const savedData = this.localStorageService.getData('invoice-data');
     if (savedData) {
       this.uploadedData = savedData;
-      // Remove null values if they exist
-      this.uploadedData = this.uploadedData.filter(
-        (invoice) => invoice.invoice_number !== null
-      );
-    } else {
-      this.uploadedData = []; // Initialize with an empty array if no data exists
     }
-    this.combineInvoiceDetails();
+    // this.combineInvoiceDetails();
   }
 
   // Methods for managing selected rows and moving them up/down...
@@ -212,6 +201,7 @@ export class InvoiceManagementComponent implements OnDestroy {
       this.allInvoices.push(...this.invoiceDetails);
       this.localStorageService.saveData('allInvoices', this.allInvoices);
       this.invoiceDetails = [];
+      alert('The Invoice save successfully');
     } else {
       alert('Please add the invoice data.');
     }
