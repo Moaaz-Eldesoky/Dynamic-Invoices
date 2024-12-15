@@ -17,7 +17,7 @@
       </div>
     </div>
     <div id="dropArea" class="drop-area" *ngIf="!file">
-      <input type="file" (change)="getFile($event)"/>
+      <input type="file" (change)="getFile($event)" />
       <h6>Drag and Drop your Invoice her</h6>
     </div>
     <div *ngIf="file">

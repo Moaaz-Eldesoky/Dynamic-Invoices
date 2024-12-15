@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './Authentication/login/login.component';
@@ -17,15 +16,12 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { ExcelService } from './excel.service';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
-
-
-
 
 @NgModule({
   declarations: [
@@ -41,18 +37,19 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
     UserSettingsComponent,
     HeaderComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     MatDatepickerModule,
     MatFormFieldModule,
     MatInputModule,
-    MatMomentDateModule
+    MatMomentDateModule,
   ],
   providers: [ExcelService, provideAnimationsAsync()],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

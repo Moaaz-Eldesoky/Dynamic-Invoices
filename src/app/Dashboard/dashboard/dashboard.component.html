@@ -6,8 +6,7 @@
           <h2 class="card-title">{{ invoice?.invoice_company }}</h2>
           <p class="card-text">Invoice Number: {{ invoice?.invoice_number }}</p>
           <p class="card-text">Invoice Date: {{ invoice?.invoice_date }}</p>
-          <a routerLink="/invoicemgm" class="btn btn-primary"
-            (click)="changeLocalhostData(invoice[0]?.invoice_number)">Manage Invoice</a>
+          <a class="btn btn-primary" (click)="changeLocalhostData(invoice?.invoice_number)">Manage Invoice</a>
         </div>
       </div>
     </div>

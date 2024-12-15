@@ -53,18 +53,23 @@ export class InvoiceManagementComponent implements OnDestroy {
     private localStorageService: LocalStorageService
   ) {
     this.excelDataSubscription = this.excelService.uploadedData$.subscribe(
-      (data: Invoice[]) => {
+      (data: UploadedDataItem[]) => {
         if (!data || data.length === 0) return;
-        this.uploadedData = data.map((invoice) => ({
-          invoice_number: invoice.invoice_number,
-          invoice_date: invoice.invoice_date,
-          invoice_company: invoice.invoice_company,
-          products: invoice.products.map((item) => ({
-            ...item,
-            selected: false,
-          })),
-        }));
-
+        console.log(
+          'Excel subscription is getting this data' + JSON.stringify(data)
+        );
+        this.uploadedData = [
+          {
+            invoice_number: this.invoice_num,
+            invoice_date: this.invoice_date,
+            invoice_company: this.invoice_company,
+            products: data.map((item) => ({
+              ...item,
+              selected: false, // Ensure selected is set to false
+            })),
+          },
+        ];
+        console.log('uploadedDataValue is: ' + this.uploadedData);
         if (!this.localStorageService.getData('invoice-data')) {
           this.localStorageService.saveData('invoice-data', this.uploadedData);
           this.showEmptyRow = true;
@@ -184,7 +189,15 @@ export class InvoiceManagementComponent implements OnDestroy {
   }
 
   areAnyRowsSelected(): boolean {
-    return this.uploadedData[0].products.some((row) => row.selected); // Assuming there's only one invoice in uploadedData
+    if (
+      !this.uploadedData ||
+      !this.uploadedData[0] ||
+      !this.uploadedData[0].products
+    ) {
+      console.log('no data uploaded');
+      return false;
+    }
+    return this.uploadedData[0].products.some((row) => row.selected);
   }
 
   saveInvoice() {
